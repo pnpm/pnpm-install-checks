@@ -1,105 +1,95 @@
 'use strict'
-var test = require('tap').test
+const tape = require('tape')
+const test = require('tape-promise').default(tape)
 var c = require('../index.js').checkPlatform
 
 test('target cpu wrong', function (t) {
-  var target = {}
-  target.cpu = 'enten-cpu'
-  target.os = 'any'
-  c(target, false, function (err) {
-    t.ok(err, 'error present')
-    t.equal(err.code, 'EBADPLATFORM')
-    t.end()
-  })
+  const target = {
+    cpu: 'enten-cpu',
+    os: 'any'
+  }
+  return c(target)
+    .then(() => t.fail())
+    .catch(err => {
+      t.ok(err, 'error present')
+      t.equal(err.code, 'EBADPLATFORM')
+    })
 })
 
 test('os wrong', function (t) {
-  var target = {}
-  target.cpu = 'any'
-  target.os = 'enten-os'
-  c(target, false, function (err) {
-    t.ok(err, 'error present')
-    t.equal(err.code, 'EBADPLATFORM')
-    t.end()
-  })
+  const target = {
+    cpu: 'any',
+    os: 'enten-os'
+  }
+  return c(target)
+    .then(() => t.fail())
+    .catch(err => {
+      t.ok(err, 'error present')
+      t.equal(err.code, 'EBADPLATFORM')
+    })
 })
 
 test('nothing wrong', function (t) {
-  var target = {}
-  target.cpu = 'any'
-  target.os = 'any'
-  c(target, false, function (err) {
-    t.notOk(err, 'no error present')
-    t.end()
-  })
-})
-
-test('force', function (t) {
-  var target = {}
-  target.cpu = 'enten-cpu'
-  target.os = 'any'
-  c(target, true, function (err) {
-    t.notOk(err, 'no error present')
-    t.end()
-  })
+  const target = {
+    cpu: 'any',
+    os: 'any'
+  }
+  return c(target)
 })
 
 test('no opinions', function (t) {
   var target = {}
-  c(target, false, function (err) {
-    t.notOk(err, 'no error present')
-    t.end()
-  })
+  return c(target)
 })
 
 test('only target cpu wrong', function (t) {
-  var target = {}
-  target.cpu = 'enten-cpu'
-  c(target, false, function (err) {
-    t.ok(err, 'error present')
-    t.equal(err.code, 'EBADPLATFORM')
-    t.end()
-  })
+  var target = {cpu: 'enten-cpu'}
+  return c(target)
+    .then(() => t.fail())
+    .catch(err => {
+      t.ok(err, 'error present')
+      t.equal(err.code, 'EBADPLATFORM')
+    })
 })
 
 test('only os wrong', function (t) {
   var target = {}
   target.os = 'enten-os'
-  c(target, false, function (err) {
-    t.ok(err, 'error present')
-    t.equal(err.code, 'EBADPLATFORM')
-    t.end()
-  })
+  return c(target)
+    .then(() => t.fail())
+    .catch(err => {
+      t.ok(err, 'error present')
+      t.equal(err.code, 'EBADPLATFORM')
+    })
 })
 
 test('everything wrong w/arrays', function (t) {
   var target = {}
   target.cpu = ['enten-cpu']
   target.os = ['enten-os']
-  c(target, false, function (err) {
-    t.ok(err, 'error present')
-    t.equal(err.code, 'EBADPLATFORM')
-    t.end()
-  })
+  return c(target)
+    .then(() => t.fail())
+    .catch(err => {
+      t.ok(err, 'error present')
+      t.equal(err.code, 'EBADPLATFORM')
+    })
 })
 
 test('os wrong (negation)', function (t) {
   var target = {}
   target.cpu = 'any'
   target.os = '!' + process.platform
-  c(target, false, function (err) {
-    t.ok(err, 'error present')
-    t.equal(err.code, 'EBADPLATFORM')
-    t.end()
-  })
+  return c(target)
+    .then(() => t.fail())
+    .catch(err => {
+      t.ok(err, 'error present')
+      t.equal(err.code, 'EBADPLATFORM')
+    })
 })
 
 test('nothing wrong (negation)', function (t) {
   var target = {}
   target.cpu = '!enten-cpu'
   target.os = '!enten-os'
-  c(target, false, function (err) {
-    t.notOk(err, 'no error present')
-    t.end()
-  })
+  return c(target)
 })

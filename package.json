@@ -10,10 +10,11 @@
     "mkdirp": "~0.3.5",
     "rimraf": "~2.2.5",
     "standard": "^5.4.1",
-    "tap": "^5.0.1"
+    "tape": "^4.6.2",
+    "tape-promise": "^2.0.0"
   },
   "scripts": {
-    "test": "standard && tap test/*.js"
+    "test": "standard && node test"
   },
   "repository": {
     "type": "git",

@@ -26,15 +26,11 @@ function checkEngine (target, npmVer, nodeVer, force, strict, cb) {
 }
 
 exports.checkPlatform = checkPlatform
-function checkPlatform (target, force, cb) {
+function checkPlatform (target) {
   var platform = process.platform
   var arch = process.arch
   var osOk = true
   var cpuOk = true
-
-  if (force) {
-    return cb()
-  }
 
   if (target.os) {
     osOk = checkList(platform, target.os)
@@ -49,9 +45,9 @@ function checkPlatform (target, force, cb) {
     er.os = target.os || ['any']
     er.cpu = target.cpu || ['any']
     er.pkgid = target._id
-    return cb(er)
+    return Promise.reject(er)
   }
-  return cb()
+  return Promise.resolve()
 }
 
 function checkList (value, list) {

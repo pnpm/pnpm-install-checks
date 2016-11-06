@@ -1,5 +1,6 @@
 'use strict'
-var test = require('tap').test
+const tape = require('tape')
+const test = require('tape-promise').default(tape)
 var c = require('../index.js').checkEngine
 
 test('no engine defined', function (t) {

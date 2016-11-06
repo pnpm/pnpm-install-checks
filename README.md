@@ -11,7 +11,8 @@ object as its second argument.
 
 Error type: `ENOTSUP`
 
-### .checkPlatform(target, force, cb)
+### `.checkPlatform(target): Promise<void>`
+
 Check if OS/Arch is supported by the package.
 
 Error type: `EBADPLATFORM`
