@@ -40,7 +40,7 @@ function checkPlatform (target) {
     er.os = target.os || ['any']
     er.cpu = target.cpu || ['any']
     er.pkgid = target._id
-    return Promise.reject(er)
+    return Promise.resolve(er)
   }
   return Promise.resolve()
 }

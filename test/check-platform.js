@@ -9,8 +9,7 @@ test('target cpu wrong', function (t) {
     os: 'any'
   }
   return c(target)
-    .then(() => t.fail())
-    .catch(err => {
+    .then(err => {
       t.ok(err, 'error present')
       t.equal(err.code, 'EBADPLATFORM')
     })
@@ -22,8 +21,7 @@ test('os wrong', function (t) {
     os: 'enten-os'
   }
   return c(target)
-    .then(() => t.fail())
-    .catch(err => {
+    .then(err => {
       t.ok(err, 'error present')
       t.equal(err.code, 'EBADPLATFORM')
     })
@@ -34,19 +32,18 @@ test('nothing wrong', function (t) {
     cpu: 'any',
     os: 'any'
   }
-  return c(target)
+  return c(target).then(err => t.notOk(err))
 })
 
 test('no opinions', function (t) {
   var target = {}
-  return c(target)
+  return c(target).then(err => t.notOk(err))
 })
 
 test('only target cpu wrong', function (t) {
   var target = {cpu: 'enten-cpu'}
   return c(target)
-    .then(() => t.fail())
-    .catch(err => {
+    .then(err => {
       t.ok(err, 'error present')
       t.equal(err.code, 'EBADPLATFORM')
     })
@@ -56,8 +53,7 @@ test('only os wrong', function (t) {
   var target = {}
   target.os = 'enten-os'
   return c(target)
-    .then(() => t.fail())
-    .catch(err => {
+    .then(err => {
       t.ok(err, 'error present')
       t.equal(err.code, 'EBADPLATFORM')
     })
@@ -68,8 +64,7 @@ test('everything wrong w/arrays', function (t) {
   target.cpu = ['enten-cpu']
   target.os = ['enten-os']
   return c(target)
-    .then(() => t.fail())
-    .catch(err => {
+    .then(err => {
       t.ok(err, 'error present')
       t.equal(err.code, 'EBADPLATFORM')
     })
@@ -80,8 +75,7 @@ test('os wrong (negation)', function (t) {
   target.cpu = 'any'
   target.os = '!' + process.platform
   return c(target)
-    .then(() => t.fail())
-    .catch(err => {
+    .then(err => {
       t.ok(err, 'error present')
       t.equal(err.code, 'EBADPLATFORM')
     })
@@ -91,5 +85,5 @@ test('nothing wrong (negation)', function (t) {
   var target = {}
   target.cpu = '!enten-cpu'
   target.os = '!enten-os'
-  return c(target)
+  return c(target).then(err => t.notOk(err))
 })

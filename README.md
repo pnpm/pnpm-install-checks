@@ -4,14 +4,14 @@ A package that contains checks that pnpm runs during the installation.
 
 ## API
 
-### `.checkEngine(target, currentEngine): Promise<WarningObject>`
+### `.checkEngine(target, currentEngine): Promise<Error>`
 
 Check if node/npm version is supported by the package. If not
 supported, an error object is returned.
 
 Error type: `ENOTSUP`
 
-### `.checkPlatform(target): Promise<void>`
+### `.checkPlatform(target): Promise<Error>`
 
 Check if OS/Arch is supported by the package.
 
