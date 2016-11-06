@@ -1,12 +1,10 @@
 language: node_js
 sudo: false
 before_install:
-  - "npm config set spin false"
-  - "npm install -g npm"
+  - npm config set spin false
+  - npm install -g pnpm
+install:
+  - pnpm install
 node_js:
-  - "5"
-  - "4"
-  - iojs
-  - "0.12"
-  - "0.10"
-  - "0.8"
+  - 5
+  - 4

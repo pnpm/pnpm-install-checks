@@ -1,6 +1,6 @@
-# npm-install-checks
+# pnpm-install-checks
 
-A package that contains checks that npm runs during the installation.
+A package that contains checks that pnpm runs during the installation.
 
 ## API
 
