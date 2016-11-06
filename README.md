@@ -4,10 +4,10 @@ A package that contains checks that pnpm runs during the installation.
 
 ## API
 
-### .checkEngine(target, npmVer, nodeVer, force, strict, cb)
+### `.checkEngine(target, currentEngine): Promise<WarningObject>`
+
 Check if node/npm version is supported by the package. If not
-strict and it isn't supported, `cb` is called with the error
-object as its second argument.
+supported, an error object is returned.
 
 Error type: `ENOTSUP`
 

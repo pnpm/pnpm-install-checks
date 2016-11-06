@@ -5,24 +5,19 @@ var util = require('util')
 var semver = require('semver')
 
 exports.checkEngine = checkEngine
-function checkEngine (target, npmVer, nodeVer, force, strict, cb) {
-  var nodev = force ? null : nodeVer
-  var eng = target.engines
-  if (!eng) return cb()
-  if (nodev && eng.node && !semver.satisfies(nodev, eng.node) ||
-      eng.npm && !semver.satisfies(npmVer, eng.npm)) {
-    var er = new Error(util.format('Unsupported engine for %s: wanted: %j (current: %j)',
-      target._id, eng, {node: nodev, npm: npmVer}))
+function checkEngine (target, currentEngine) {
+  const eng = target.engines
+  if (!eng) return Promise.resolve()
+  if (eng.node && !semver.satisfies(currentEngine.nodeVersion, eng.node) ||
+      eng.npm && !semver.satisfies(currentEngine.pnpmVersion, eng.npm)) {
+    const er = new Error(util.format('Unsupported engine for %s: wanted: %j (current: %j)',
+      target._id, eng, {node: currentEngine.nodeVersion, pnpm: currentEngine.pnpmVersion}))
     er.code = 'ENOTSUP'
     er.required = eng
     er.pkgid = target._id
-    if (strict) {
-      return cb(er)
-    } else {
-      return cb(null, er)
-    }
+    return Promise.resolve(er)
   }
-  return cb()
+  return Promise.resolve()
 }
 
 exports.checkPlatform = checkPlatform
