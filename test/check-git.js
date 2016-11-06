@@ -1,3 +1,4 @@
+'use strict'
 var test = require('tap').test
 var c = require('../index.js').checkGit
 var rimraf = require('rimraf')
