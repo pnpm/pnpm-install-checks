@@ -14,7 +14,8 @@ function checkEngine (target, currentEngine) {
       target._id, eng, {node: currentEngine.nodeVersion, pnpm: currentEngine.pnpmVersion}))
     er.code = 'ENOTSUP'
     er.required = eng
-    er.pkgid = target._id
+    er.pkgId = target._id
+    er.pkgid = target._id // remove in v2
     return Promise.resolve(er)
   }
   return Promise.resolve()
@@ -39,7 +40,8 @@ function checkPlatform (target) {
     er.code = 'EBADPLATFORM'
     er.os = target.os || ['any']
     er.cpu = target.cpu || ['any']
-    er.pkgid = target._id
+    er.pkgId = target._id
+    er.pkgid = target._id // remove in v2
     return Promise.resolve(er)
   }
   return Promise.resolve()
@@ -109,7 +111,8 @@ function checkCycle (target, ancestors, cb) {
     tree.push(JSON.parse(JSON.stringify(t)))
     t = Object.getPrototypeOf(t)
   }
-  er.pkgid = target._id
+  er.pkgId = target._id
+  er.pkgid = target._id // remove in v2
   er.code = 'ECYCLE'
   return cb(er)
 }
