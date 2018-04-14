@@ -1652,7 +1652,7 @@ shrinkwrapVersion: 3
 specifiers:
   mkdirp: ^0.5.1
   rimraf: ^2.5.4
-  semver: ^2.3.0 || 3.x || 4 || 5
+  semver: '> 4.3.2 || 5'
   standard: ^11.0.1
   tape: ^4.6.2
   tape-promise: ^3.0.0
