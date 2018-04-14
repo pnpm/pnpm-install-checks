@@ -7,11 +7,11 @@
     "semver": "^2.3.0 || 3.x || 4 || 5"
   },
   "devDependencies": {
-    "mkdirp": "~0.5.1",
-    "rimraf": "~2.5.4",
-    "standard": "^8.6.0",
+    "mkdirp": "^0.5.1",
+    "rimraf": "^2.5.4",
+    "standard": "^11.0.1",
     "tape": "^4.6.2",
-    "tape-promise": "^2.0.0"
+    "tape-promise": "^3.0.0"
   },
   "scripts": {
     "test": "standard && node test"

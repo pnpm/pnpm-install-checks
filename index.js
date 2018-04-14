@@ -8,8 +8,8 @@ exports.checkEngine = checkEngine
 function checkEngine (target, currentEngine) {
   const eng = target.engines
   if (!eng) return Promise.resolve()
-  if (eng.node && !semver.satisfies(currentEngine.nodeVersion, eng.node) ||
-      eng.pnpm && !semver.satisfies(currentEngine.pnpmVersion, eng.pnpm)) {
+  if ((eng.node && !semver.satisfies(currentEngine.nodeVersion, eng.node)) ||
+      (eng.pnpm && !semver.satisfies(currentEngine.pnpmVersion, eng.pnpm))) {
     const er = new Error(util.format('Unsupported engine for %s: wanted: %j (current: %j)',
       target._id, eng, {node: currentEngine.nodeVersion, pnpm: currentEngine.pnpmVersion}))
     er.code = 'ENOTSUP'
