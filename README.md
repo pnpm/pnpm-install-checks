@@ -3,7 +3,7 @@
 > checks that pnpm runs during the installation of a module
 
 [![npm version](https://img.shields.io/npm/v/pnpm-install-checks.svg?style=flat-square)](https://www.npmjs.com/package/pnpm-install-checks)
-[![Build Status](https://img.shields.io/travis/zkochan/pnpm-install-checks/master.svg?style=flat-square)](https://travis-ci.org/zkochan/pnpm-install-checks)
+[![Build Status](https://img.shields.io/travis/pnpm/pnpm-install-checks/master.svg?style=flat-square)](https://travis-ci.org/pnpm/pnpm-install-checks)
 
 ## API
 

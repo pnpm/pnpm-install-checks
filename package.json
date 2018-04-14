@@ -18,9 +18,9 @@
   },
   "repository": {
     "type": "git",
-    "url": "git://github.com/zkochan/pnpm-install-checks.git"
+    "url": "git://github.com/pnpm/pnpm-install-checks.git"
   },
-  "homepage": "https://github.com/zkochan/pnpm-install-checks",
+  "homepage": "https://github.com/pnpm/pnpm-install-checks",
   "keywords": [
     "npm,",
     "install"
@@ -28,6 +28,6 @@
   "author": "Robert Kowalski <rok@kowalski.gd>",
   "license": "BSD-2-Clause",
   "bugs": {
-    "url": "https://github.com/zkochan/pnpm-install-checks/issues"
+    "url": "https://github.com/pnpm/pnpm-install-checks/issues"
   }
 }
