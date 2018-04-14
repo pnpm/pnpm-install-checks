@@ -5,7 +5,7 @@ devDependencies:
   rimraf: 2.6.2
   standard: 11.0.1
   tape: 4.9.0
-  tape-promise: 3.0.0
+  tape-promise: 2.0.1
 packages:
   /acorn-jsx/3.0.1:
     dependencies:
@@ -1538,13 +1538,13 @@ packages:
     dev: true
     resolution:
       integrity: sha512-UUkEAPdSGxtRpiV9ozJ5cMTtYiqz7Ni1OGqLXRCynrvzdtR1p+cfOWe2RJLwvUG8hNanaSRjecIqwOjqeatDsA==
-  /tape-promise/3.0.0:
+  /tape-promise/2.0.1:
     dependencies:
       is-promise: 2.1.0
       onetime: 2.0.1
     dev: true
     resolution:
-      integrity: sha512-3LZy5ieZleqn9PbZgr2Aqkw5ikxdJT5DhnNxWH8tCL6yzNQyv0jPZH8nkpboTPDRO5COYmYbjKhn9Fl2GchOKg==
+      integrity: sha1-dryf91CLPgV9CW9ErJqTw8rk7TQ=
   /tape/4.9.0:
     dependencies:
       deep-equal: 1.0.1
@@ -1655,4 +1655,4 @@ specifiers:
   semver: '> 4.3.2 || 5'
   standard: ^11.0.1
   tape: ^4.6.2
-  tape-promise: ^3.0.0
+  tape-promise: ^2.0.1

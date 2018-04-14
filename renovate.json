@@ -2,5 +2,11 @@
   "extends": [
     "config:base"
   ],
-  "pinVersions": false
+  "pinVersions": false,
+  "packageRules": [
+    {
+      "packageNames": "tape-promise",
+      "allowedVersions": "<3"
+    }
+  ]
 }
