@@ -1,11 +1,15 @@
 language: node_js
-sudo: false
-before_install:
-  - npm config set spin false
-  - npm install -g pnpm
-install:
-  - pnpm install
 node_js:
   - 4
   - 6
-  - 7
+  - 8
+  - 9
+sudo: false
+before_install:
+  - curl -L https://unpkg.com/@pnpm/self-installer | node
+install:
+  - pnpm install
+script:
+  - npm test
+notifications:
+  email: false
